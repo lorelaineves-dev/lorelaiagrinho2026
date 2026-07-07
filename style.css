@@ -1,0 +1,5 @@
+/* Altera a cor de todos os títulos h1 para vermelho e o tamanho da fonte */
+h1 {
+    color: #E53935;
+    font-size: 24px;
+}
