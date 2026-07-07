@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte, Futuro Sustentável</title>
+    <style>
+        /* PALETA DE CORES (Inspirada no Flamengo): 
+           Vermelho: #C8102E | Preto: #111111 | Branco: #FFFFFF | Cinza Claro: #F4F4F4 */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #F4F4F4;
+            color: #111111;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #111111;
+            border-bottom: 5px solid #C8102E;
+            color: #FFFFFF;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            width: 85%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #C8102E;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #C8102E;
+        }
+
+        /* Banner Principal */
+        .hero {
+            background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(200, 16, 46, 0.4)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+            margin-top: 80px;
+            padding: 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Conteúdo Geral */
+        .container {
+            width: 85%;
+            margin: 40px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+            color: #111111;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #C8102E;
+            margin: 10px auto 0;
+        }
+
+        /* Pilares do Agro */
+        .grid-agro {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-top: 4px solid #111111;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-top-color: #C8102E;
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .img-familiar {
+            background-image: url('https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&q=80&w=600');
+        }
+
+        .img-negocio {
+            background-image: url('https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600');
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 10px;
+            color: #C8102E;
+        }
+
+        /* Seção Interativa JavaScript */
+        .interativo {
+            background-color: #111111;
+            color: #FFFFFF;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 8px solid #C8102E;
+        }
+
+        .btn-sustentavel {
+            background-color: #C8102E;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn-sustentavel:hover {
+            background-color: #A00D25;
+        }
+
+        .mensagem-js {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            min-height: 50px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #111111;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            border-top: 4px solid #C8102E;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Agro<span>Forte</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#pilares">Os Pilares</a></li>
+                    <li><a href="#equilibrio">Equilíbrio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Futuro Sustentável</h2>
+            <p>O equilíbrio perfeito entre a potência da produção no campo e a preservação do nosso meio ambiente.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <section id="pilares">
+            <h2 class="section-title">A Força do Campo</h2>
+            
+            <div class="grid-agro">
+                <div class="card">
+                    <div class="card-img img-familiar"></div>
+                    <div class="card-content">
+                        <h3>Agricultura Familiar</h3>
+                        <p>Ela é a verdadeira potência na mesa dos brasileiros. Responsável pela maior parte dos alimentos frescos que consumimos diariamente, a agricultura familiar une tradição, cuidado com a terra e subsistência econômica de milhões de famílias, promovendo a biodiversidade local.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img img-negocio"></div>
+                    <div class="card-content">
+                        <h3>Agronegócio</h3>
+                        <p>A força motriz da nossa economia global. Com alta tecnologia, eficiência e grande escala produtiva, o agronegócio garante a segurança alimentar mundial e impulsiona as exportações do país, mostrando que a modernidade é uma grande aliada do desenvolvimento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equilibrio" class="interativo">
+            <h2>O Equilíbrio Sustentável</h2>
+            <p>Tanto a agricultura familiar quanto o agronegócio possuem uma impotência destrutiva se agirem sem responsabilidade ambiental. Porém, quando focam na sustentabilidade, tornam-se forças imbatíveis para o futuro.</p>
+            
+            <button class="btn-sustentavel" id="btnAcao">Ver Práticas Sustentáveis</button>
+            <div class="mensagem-js" id="mensagemSustentavel">Clique no botão para descobrir como o campo protege o meio ambiente.</div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AgroForte - Orgulho em Produzir com Consciência.</p>
+    </footer>
+
+    <script>
+        // Array com dicas de sustentabilidade
+        const dicas = [
+            "Rotação de Culturas: Evita o desgaste do solo e reduz a necessidade de fertilizantes químicos.",
+            "Tecnologia de Precisão: Drones e sensores reduzem o desperdício de água e insumos no agronegócio.",
+            "Preservação de Matas Ciliares: Protege os rios e garante recursos hídricos para a agricultura familiar.",
+            "Uso de Bioinsumos: Defensivos naturais que protegem a lavoura sem agredir a fauna local."
+        ];
+
+        const botao = document.getElementById('btnAcao');
+        const mensagemExibida = document.getElementById('mensagemSustentavel');
+        let indice = 0;
+
+        // Função que altera a mensagem de forma dinâmica ao clicar
+        botao.addEventListener('click', () => {
+            mensagemExibida.style.opacity = 0;
+            
+            setTimeout(() => {
+                mensagemExibida.textContent = dicas[indice];
+                mensagemExibida.style.color = "#C8102E"; // Destaca o texto em vermelho Flamengo
+                mensagemE<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte, Futuro Sustentável</title>
+    <style>
+        /* PALETA DE CORES (Inspirada no Flamengo): 
+           Vermelho: #C8102E | Preto: #111111 | Branco: #FFFFFF | Cinza Claro: #F4F4F4 */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #F4F4F4;
+            color: #111111;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #111111;
+            border-bottom: 5px solid #C8102E;
+            color: #FFFFFF;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            width: 85%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #C8102E;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #C8102E;
+        }
+
+        /* Banner Principal */
+        .hero {
+            background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(200, 16, 46, 0.4)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+            margin-top: 80px;
+            padding: 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Conteúdo Geral */
+        .container {
+            width: 85%;
+            margin: 40px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+            color: #111111;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #C8102E;
+            margin: 10px auto 0;
+        }
+
+        /* Pilares do Agro */
+        .grid-agro {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-top: 4px solid #111111;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-top-color: #C8102E;
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .img-familiar {
+            background-image: url('https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&q=80&w=600');
+        }
+
+        .img-negocio {
+            background-image: url('https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600');
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 10px;
+            color: #C8102E;
+        }
+
+        /* Seção Interativa JavaScript */
+        .interativo {
+            background-color: #111111;
+            color: #FFFFFF;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 8px solid #C8102E;
+        }
+
+        .btn-sustentavel {
+            background-color: #C8102E;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn-sustentavel:hover {
+            background-color: #A00D25;
+        }
+
+        .mensagem-js {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            min-height: 50px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #111111;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            border-top: 4px solid #C8102E;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Agro<span>Forte</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#pilares">Os Pilares</a></li>
+                    <li><a href="#equilibrio">Equilíbrio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Futuro Sustentável</h2>
+            <p>O equilíbrio perfeito entre a potência da produção no campo e a preservação do nosso meio ambiente.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <section id="pilares">
+            <h2 class="section-title">A Força do Campo</h2>
+            
+            <div class="grid-agro">
+                <div class="card">
+                    <div class="card-img img-familiar"></div>
+                    <div class="card-content">
+                        <h3>Agricultura Familiar</h3>
+                        <p>Ela é a verdadeira potência na mesa dos brasileiros. Responsável pela maior parte dos alimentos frescos que consumimos diariamente, a agricultura familiar une tradição, cuidado com a terra e subsistência econômica de milhões de famílias, promovendo a biodiversidade local.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img img-negocio"></div>
+                    <div class="card-content">
+                        <h3>Agronegócio</h3>
+                        <p>A força motriz da nossa economia global. Com alta tecnologia, eficiência e grande escala produtiva, o agronegócio garante a segurança alimentar mundial e impulsiona as exportações do país, mostrando que a modernidade é uma grande aliada do desenvolvimento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equilibrio" class="interativo">
+            <h2>O Equilíbrio Sustentável</h2>
+            <p>Tanto a agricultura familiar quanto o agronegócio possuem uma impotência destrutiva se agirem sem responsabilidade ambiental. Porém, quando focam na sustentabilidade, tornam-se forças imbatíveis para o futuro.</p>
+            
+            <button class="btn-sustentavel" id="btnAcao">Ver Práticas Sustentáveis</button>
+            <div class="mensagem-js" id="mensagemSustentavel">Clique no botão para descobrir como o campo protege o meio ambiente.</div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AgroForte - Orgulho em Produzir com Consciência.</p>
+    </footer>
+
+    <script>
+        // Array com dicas de sustentabilidade
+        const dicas = [
+            "Rotação de Culturas: Evita o desgaste do solo e reduz a necessidade de fertilizantes químicos.",
+            "Tecnologia de Precisão: Drones e sensores reduzem o desperdício de água e insumos no agronegócio.",
+            "Preservação de Matas Ciliares: Protege os rios e garante recursos hídricos para a agricultura familiar.",
+            "Uso de Bioinsumos: Defensivos naturais que protegem a lavoura sem agredir a fauna local."
+        ];
+
+        const botao = document.getElementById('btnAcao');
+        const mensagemExibida = document.getElementById('mensagemSustentavel');
+        let indice = 0;
+
+        // Função que altera a mensagem de forma dinâmica ao clicar
+        botao.addEventListener('click', () => {
+            mensagemExibida.style.opacity = 0;
+            
+            setTimeout(() => {
+                mensagemExibida.textContent = dicas[indice];
+                mensagemExibida.style.color = "#C8102E"; // Destaca o texto em vermelho Flamengo
+                mensagemExibida.style.opacity = 1;
+                
+                // Avança no array de dicas
+                indice = (indice + 1) % dicas.length;
+            }, 200);
+        });
+    </script>
+</body>
+</html>xibida.style.opacity = 1;
+                
+                // Avança no array de dicas
+                indice = (indice + 1) % dicas.length;
+            }, 200);
+        });
+    </script>
+</body>
+</html><!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agro Forte, Futuro Sustentável</title>
+    <style>
+        /* PALETA DE CORES (Inspirada no Flamengo): 
+           Vermelho: #C8102E | Preto: #111111 | Branco: #FFFFFF | Cinza Claro: #F4F4F4 */
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #F4F4F4;
+            color: #111111;
+            line-height: 1.6;
+        }
+
+        /* Cabeçalho */
+        header {
+            background-color: #111111;
+            border-bottom: 5px solid #C8102E;
+            color: #FFFFFF;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            width: 85%;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo h1 {
+            font-size: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #C8102E;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 20px;
+        }
+
+        nav ul li a {
+            color: #FFFFFF;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #C8102E;
+        }
+
+        /* Banner Principal */
+        .hero {
+            background: linear-gradient(rgba(17, 17, 17, 0.7), rgba(200, 16, 46, 0.4)), url('https://images.unsplash.com/photo-1500937386664-56d1dfef3854?auto=format&fit=crop&q=80&w=1200') no-repeat center center/cover;
+            height: 60vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: #FFFFFF;
+            margin-top: 80px;
+            padding: 0 20px;
+        }
+
+        .hero-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Conteúdo Geral */
+        .container {
+            width: 85%;
+            margin: 40px auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            margin-bottom: 30px;
+            position: relative;
+            color: #111111;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: #C8102E;
+            margin: 10px auto 0;
+        }
+
+        /* Pilares do Agro */
+        .grid-agro {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .card {
+            background: #FFFFFF;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-top: 4px solid #111111;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            border-top-color: #C8102E;
+        }
+
+        .card-img {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .img-familiar {
+            background-image: url('https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&q=80&w=600');
+        }
+
+        .img-negocio {
+            background-image: url('https://images.unsplash.com/photo-1530595467537-0b5996c41f2d?auto=format&fit=crop&q=80&w=600');
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .card-content h3 {
+            margin-bottom: 10px;
+            color: #C8102E;
+        }
+
+        /* Seção Interativa JavaScript */
+        .interativo {
+            background-color: #111111;
+            color: #FFFFFF;
+            padding: 40px;
+            border-radius: 8px;
+            text-align: center;
+            border-left: 8px solid #C8102E;
+        }
+
+        .btn-sustentavel {
+            background-color: #C8102E;
+            color: #FFFFFF;
+            border: none;
+            padding: 12px 25px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn-sustentavel:hover {
+            background-color: #A00D25;
+        }
+
+        .mensagem-js {
+            margin-top: 20px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            min-height: 50px;
+        }
+
+        /* Rodapé */
+        footer {
+            background-color: #111111;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 50px;
+            border-top: 4px solid #C8102E;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <h1>Agro<span>Forte</span></h1>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#pilares">Os Pilares</a></li>
+                    <li><a href="#equilibrio">Equilíbrio</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h2>Futuro Sustentável</h2>
+            <p>O equilíbrio perfeito entre a potência da produção no campo e a preservação do nosso meio ambiente.</p>
+        </div>
+    </section>
+
+    <main class="container">
+        
+        <section id="pilares">
+            <h2 class="section-title">A Força do Campo</h2>
+            
+            <div class="grid-agro">
+                <div class="card">
+                    <div class="card-img img-familiar"></div>
+                    <div class="card-content">
+                        <h3>Agricultura Familiar</h3>
+                        <p>Ela é a verdadeira potência na mesa dos brasileiros. Responsável pela maior parte dos alimentos frescos que consumimos diariamente, a agricultura familiar une tradição, cuidado com a terra e subsistência econômica de milhões de famílias, promovendo a biodiversidade local.</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-img img-negocio"></div>
+                    <div class="card-content">
+                        <h3>Agronegócio</h3>
+                        <p>A força motriz da nossa economia global. Com alta tecnologia, eficiência e grande escala produtiva, o agronegócio garante a segurança alimentar mundial e impulsiona as exportações do país, mostrando que a modernidade é uma grande aliada do desenvolvimento.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="equilibrio" class="interativo">
+            <h2>O Equilíbrio Sustentável</h2>
+            <p>Tanto a agricultura familiar quanto o agronegócio possuem uma impotência destrutiva se agirem sem responsabilidade ambiental. Porém, quando focam na sustentabilidade, tornam-se forças imbatíveis para o futuro.</p>
+            
+            <button class="btn-sustentavel" id="btnAcao">Ver Práticas Sustentáveis</button>
+            <div class="mensagem-js" id="mensagemSustentavel">Clique no botão para descobrir como o campo protege o meio ambiente.</div>
+        </section>
+
+    </main>
+
+    <footer>
+        <p>&copy; 2026 AgroForte - Orgulho em Produzir com Consciência.</p>
+    </footer>
+
+    <script>
+        // Array com dicas de sustentabilidade
+        const dicas = [
+            "Rotação de Culturas: Evita o desgaste do solo e reduz a necessidade de fertilizantes químicos.",
+            "Tecnologia de Precisão: Drones e sensores reduzem o desperdício de água e insumos no agronegócio.",
+            "Preservação de Matas Ciliares: Protege os rios e garante recursos hídricos para a agricultura familiar.",
+            "Uso de Bioinsumos: Defensivos naturais que protegem a lavoura sem agredir a fauna local."
+        ];
+
+        const botao = document.getElementById('btnAcao');
+        const mensagemExibida = document.getElementById('mensagemSustentavel');
+        let indice = 0;
+
+        // Função que altera a mensagem de forma dinâmica ao clicar
+        botao.addEventListener('click', () => {
+            mensagemExibida.style.opacity = 0;
+            
+            setTimeout(() => {
+                mensagemExibida.textContent = dicas[indice];
+                mensagemExibida.style.color = "#C8102E"; // Destaca o texto em vermelho Flamengo
+                mensagemExibida.style.opacity = 1;
+                
+                // Avança no array de dicas
+                indice = (indice + 1) % dicas.length;
+            }, 200);
+        });
+    </script>
+</body>
+</html>
